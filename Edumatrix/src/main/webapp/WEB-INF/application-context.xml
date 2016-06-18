@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:annotation-config />
+	<context:property-placeholder location="classpath:log4j.properties"/>
+	
+<!-- configure dataSource  -->
+	<bean id="dataSource"
+	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="org.postgresql.Driver" />
+	  <property name="url" value="jdbc:postgresql://localhost:5432/edumatrix" />
+	  <property name="username" value="postgres" />
+	  <property name="password" value="123" />
+	</bean>
+	
+<!-- spring's jdbc template -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!-- spring Data Access Objects -->	
+	<bean id="instituteDao" class="com.springmvc.dao.InstituteDaoImpl"></bean>
+	<bean id="managerDao" class="com.springmvc.dao.ManagerDaoImpl"></bean>
+	<bean id="courseDao" class="com.springmvc.dao.CourseDaoImpl"></bean>
+	<bean id="officerDao" class="com.springmvc.dao.OfficerDaoImpl"></bean>
+
+<!-- spring service objects -->
+	<bean id="instituteService" class="com.springmvc.service.InstituteServiceImpl"></bean>
+	<bean id="managerService" class="com.springmvc.service.ManagerServiceImpl"></bean>
+	<bean id="courseService" class="com.springmvc.service.CourseServiceImpl"></bean>
+	<bean id="officerService" class="com.springmvc.service.OfficerServiceImpl"></bean>
+
+</beans>
