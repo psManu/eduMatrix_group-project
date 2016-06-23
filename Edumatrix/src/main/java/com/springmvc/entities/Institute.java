@@ -2,41 +2,58 @@ package com.springmvc.entities;
 
 public class Institute {
 	
-	private Integer id;
-	private String name;
-	private String address;
-	private String email;
-	private String tp_no;
+	private Integer inst_id;
+	private String inst_name;
+	private String inst_city;
+	private String inst_address;
+	private String inst_email;
+	private String inst_phone;
+	private String schema_name;
 	
-	public Integer getId() {
-		return id;
+	public Integer getInst_id() {
+		return inst_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setInst_id(Integer inst_id) {
+		this.inst_id = inst_id;
 	}
-	public String getName() {
-		return name;
+	public String getInst_name() {
+		return inst_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setInst_name(String inst_name) {
+		this.inst_name = inst_name;
 	}
-	public String getAddress() {
-		return address;
+	public String getInst_city() {
+		return inst_city;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setInst_city(String inst_city) {
+		this.inst_city = inst_city;
 	}
-	public String getTp_no() {
-		return tp_no;
+	public String getInst_address() {
+		return inst_address;
 	}
-	public void setTp_no(String tp_no) {
-		this.tp_no = tp_no;
+	public void setInst_address(String inst_address) {
+		this.inst_address = inst_address;
 	}
-	public String getEmail() {
-		return email;
+	public String getInst_email() {
+		return inst_email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setInst_email(String inst_email) {
+		this.inst_email = inst_email;
 	}
+	public String getInst_phone() {
+		return inst_phone;
+	}
+	public void setInst_phone(String inst_phone) {
+		this.inst_phone = inst_phone;
+	}
+	public String getSchema_name() {
+		return schema_name;
+	}
+	public void setSchema_name(String schema_name) {
+		this.schema_name = schema_name;
+	}
+	
+	
+	
 	
 }

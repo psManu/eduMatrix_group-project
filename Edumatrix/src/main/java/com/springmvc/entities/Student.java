@@ -1,16 +1,21 @@
 package com.springmvc.entities;
 
+import java.util.List;
+
+
 public class Student {
 	
 	private String std_id;
 	private String name;
 	private String address;
 	private String tp_no;
-	private String email;
+	/*private String email;
 	private String school;
-	private String bday;
-	private String username;
-	private String password;
+	private String bday;*/
+	private List<String> courses;
+	/*private String username;
+	private String password;*/
+	
 	
 	public String getStd_id() {
 		return std_id;
@@ -36,7 +41,7 @@ public class Student {
 	public void setTp_no(String tp_no) {
 		this.tp_no = tp_no;
 	}
-	public String getEmail() {
+	/*public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
@@ -53,8 +58,17 @@ public class Student {
 	}
 	public void setBday(String bday) {
 		this.bday = bday;
+	}*/
+	
+	
+	public List<String> getCourses() {
+		return courses;
 	}
-	public String getUsername() {
+	public void setCourses(List<String> courses) {
+		this.courses = courses;
+	}
+	
+	/*public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
@@ -65,7 +79,7 @@ public class Student {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
+	}*/
 	
 	
 }

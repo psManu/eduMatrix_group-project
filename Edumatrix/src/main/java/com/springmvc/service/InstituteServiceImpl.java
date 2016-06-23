@@ -20,30 +20,50 @@ public class InstituteServiceImpl implements InstituteService{
 		this.instituteDao = instituteDao;
 	}
 	
-	@Override
-	public void insert(Institute institute){
-		instituteDao.insert(institute);
+	
+	public Integer countInstitutes(int inst_id) {
+		return instituteDao.countInstitutes(inst_id);	
+	}
+	
+	
+	public void addInstitute(Institute institute){
+		instituteDao.addInstitute(institute);
+	}
+	
+	
+	public void updateInstitute(Institute institute){
+		instituteDao.updateInstitute(institute);
 	}
     
-	@Override
-    public void delete(int inst_id){
-    	instituteDao.delete(inst_id);
+	
+    public void deleteInstitute(int inst_id){
+    	instituteDao.deleteInstitute(inst_id);
     }
 	
-	@Override
-	public void update(Institute institute){
-		instituteDao.update(institute);
-	}
-    
-	@Override
+	
     public Institute get(int inst_id){
     	return instituteDao.get(inst_id);
     }
     
-	@Override
+	
     public List<Institute> list(){
     	return instituteDao.list();
     }
+	
+	
+	public Institute getInstituteNameById(int inst_id) {
+		return instituteDao.getInstituteNameById(inst_id);
+	}
+
+	
+	public List<Institute> fetchAllInstitutes() {
+		return instituteDao.fetchAllInstitutes();
+	}
+
+	
+	public String getInstituteSchemaById(int inst_id) {	
+		return instituteDao.getInstituteSchemaById(inst_id);
+	}
 	
 	
 }

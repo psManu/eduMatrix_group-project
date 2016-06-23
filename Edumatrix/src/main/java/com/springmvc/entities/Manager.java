@@ -1,80 +1,69 @@
 package com.springmvc.entities;
 
+import java.util.List;
+
 public class Manager {
 	
-	private String ofcr_id;
-	private String reguser_id;
-	private String name;
-	private String address;
-	private String email;
-	private String tp_no;
-	private String gender;
-	private String date_joined;
-	private String salary;
-	private String user_type = "mgr";
+	private Integer user_id;
+	private Integer inst_id;
+	private String auth_level ="manager";
+	private Integer emp_id;
+	private String emp_name;
+	private String nic;
+	private String emp_mob_phn;
+	private String emp_address;
 	private String username;
 	private String password;
+	private List<String> activities;
 	
-	public String getOfcr_id() {
-		return ofcr_id;
+	public Integer getUser_id() {
+		return user_id;
 	}
-	public void setOfcr_id(String ofcr_id) {
-		this.ofcr_id = ofcr_id;
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
-	public String getReguser_id() {
-		return reguser_id;
+	public Integer getInst_id() {
+		return inst_id;
 	}
-	public void setReguser_id(String reguser_id) {
-		this.reguser_id = reguser_id;
+	public void setInst_id(Integer inst_id) {
+		this.inst_id = inst_id;
 	}
-	public String getName() {
-		return name;
+	public String getAuth_level() {
+		return auth_level;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAuth_level(String auth_level) {
+		this.auth_level = auth_level;
 	}
-	public String getAddress() {
-		return address;
+	public Integer getEmp_id() {
+		return emp_id;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setEmp_id(Integer emp_id) {
+		this.emp_id = emp_id;
 	}
-	public String getEmail() {
-		return email;
+	public String getEmp_name() {
+		return emp_name;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
 	}
-	public String getTp_no() {
-		return tp_no;
+	public String getNic() {
+		return nic;
 	}
-	public void setTp_no(String tp_no) {
-		this.tp_no = tp_no;
+	public void setNic(String nic) {
+		this.nic = nic;
 	}
-	public String getGender() {
-		return gender;
+	public String getEmp_mob_phn() {
+		return emp_mob_phn;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setEmp_mob_phn(String emp_mob_phn) {
+		this.emp_mob_phn = emp_mob_phn;
 	}
-	public String getDate_joined() {
-		return date_joined;
+	public String getEmp_address() {
+		return emp_address;
 	}
-	public void setDate_joined(String date_joined) {
-		this.date_joined = date_joined;
+	public void setEmp_address(String emp_address) {
+		this.emp_address = emp_address;
 	}
-	public String getSalary() {
-		return salary;
-	}
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-	public String getUser_type() {
-		return user_type;
-	}
-	/*public void setUser_type(String user_type) {
-		this.user_type = user_type;
-	}*/
 	public String getUsername() {
 		return username;
 	}
@@ -86,6 +75,12 @@ public class Manager {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public List<String> getActivities() {
+		return activities;
+	}
+	public void setActivities(List<String> activities) {
+		this.activities = activities;
 	}
 	
 	

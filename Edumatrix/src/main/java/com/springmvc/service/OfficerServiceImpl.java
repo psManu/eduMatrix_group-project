@@ -17,22 +17,22 @@ public class OfficerServiceImpl implements OfficerService{
 		this.officerDao = officerDao;
 	}
 	
-	@Override
+	
 	public void saveOrUpdate(Officer officer){
 		officerDao.saveOrUpdate(officer);
 	}
     
-	@Override
+	
     public void delete(int ofcr_id){
     	officerDao.delete(ofcr_id);
     }
     
-	@Override
+	
     public Officer get(int ofcr_id){
     	return officerDao.get(ofcr_id);
     }
     
-	@Override
+	
     public List<Officer> list(){
     	return officerDao.list();
     }

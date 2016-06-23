@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="save" method="get">
+	<form action="save" method="post">
 		<label>ID:</label>
-		<input type="text" name="id" /><br>
+		<input type="text" name="std_id" /><br>
 		
 		<label>Name:</label>
 		<input type="text" name="name" /><br>
@@ -17,11 +17,14 @@
 		<label>Address:</label>
 		<input type="text" name="address" /><br>
 		
-		<label>email:</label>
-		<input type="text" name="email" /><br>
+		<!-- <label>email:</label>
+		<input type="text" name="email" /><br> -->
 		
 		<label>Phone:</label>
 		<input type="text" name="tp_no" /><br>
+		
+		<label>Courses:</label>
+		<input type="text" name="courses" /><br>
 		
 		<input type="submit" value="submit" />
 	</form>

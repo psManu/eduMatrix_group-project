@@ -20,22 +20,22 @@ public class CourseServiceImpl implements CourseService{
 		this.courseDao = courseDao;
 	}
 	
-	@Override
+	
 	public void saveOrUpdate(Course course){
 		courseDao.saveOrUpdate(course);
 	}
     
-	@Override
+	
     public void delete(int crs_id){
     	courseDao.delete(crs_id);
     }
     
-	@Override
+	
     public Course get(int crs_id){
     	return courseDao.get(crs_id);
     }
     
-	@Override
+	
     public List<Course> list(){
     	return courseDao.list();
     }

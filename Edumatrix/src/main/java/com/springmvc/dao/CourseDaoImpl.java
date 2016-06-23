@@ -17,7 +17,6 @@ public class CourseDaoImpl implements CourseDao{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	@Override
 	public void saveOrUpdate(Course course){
 		
 		if(course.getCrs_id() != null){
@@ -48,21 +47,19 @@ public class CourseDaoImpl implements CourseDao{
 		
 	}
     
-	@Override
-    public void delete(int crs_id){
+	public void delete(int crs_id){
     	
     	String sql="DELETE FROM course WHERE crs_id=?";
     	jdbcTemplate.update(sql,crs_id);
     	
     }
      
-	@Override
-    public Course get(int crs_id){
+	public Course get(int crs_id){
     	
     	String sql="SELECT * FROM course WHERE crs_id=?";
     	return jdbcTemplate.query(sql, new ResultSetExtractor<Course>(){
     		
-    		@Override
+    		
     		public Course extractData(ResultSet rs) throws SQLException, DataAccessException{
     			
     			if(rs.next()){
@@ -86,7 +83,6 @@ public class CourseDaoImpl implements CourseDao{
     	List<Course> courseList = jdbcTemplate.query(sql,
     			new RowMapper<Course>(){
     		
-    		@Override
     		public Course mapRow(ResultSet rs, int rowNum) throws SQLException{
     			
     			Course course = new Course();

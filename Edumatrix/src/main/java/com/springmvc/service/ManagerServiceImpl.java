@@ -19,26 +19,30 @@ public class ManagerServiceImpl implements ManagerService{
 	public void setManagerDao(ManagerDao managerDao) {
 		this.managerDao = managerDao;
 	}
+
 	
-	@Override
-	public void saveOrUpdate(Manager manager){
-		managerDao.saveOrUpdate(manager);
+	public void saveOrUpdate(Manager manager) {
+		// TODO Auto-generated method stub
+		
 	}
-    
-	@Override
-    public void delete(int mgr_id){
-    	managerDao.delete(mgr_id);
-    }
-    
-	@Override
-    public Manager get(int mgr_id){
-    	return managerDao.get(mgr_id);
-    }
-    
-	@Override
-    public List<Manager> list(){
-    	return managerDao.list();
-    }
+
+	
+	public void delete(int mgr_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public Manager get(int mgr_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<Manager> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 }

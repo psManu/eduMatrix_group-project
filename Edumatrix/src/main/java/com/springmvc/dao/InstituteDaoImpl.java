@@ -18,60 +18,101 @@ public class InstituteDaoImpl implements InstituteDao{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	@Override
-	public void insert(Institute institute){
+	public Integer countInstitutes(int inst_id){
 		
-		/*if(institute.getId() > 0){
-			String sql = "UPDATE institute SET name=?, email=?,adress=?,"
-					+ "tp_phone=? WHERE inst_id=?";
-			jdbcTemplate.update(sql,institute.getName(), institute.getEmail(), 
-								institute.getAddress(),institute.getId());
+		String sql = "SELECT COUNT(*) FROM global_institutes WHERE inst_id=?";
+		int count = jdbcTemplate.update(sql,inst_id);
+		return count;
+		
+	}
+	
+	
+	public void addInstitute(Institute institute){
+				
+		if(countInstitutes(institute.getInst_id()) == 0){
+			
+			System.out.println("came to insert.............");
+			String sql = "INSERT INTO institute(inst_id,inst_name,inst_city.inst_address,inst_phone, inst_email,schema_name) "
+									+ "values(?,?,?,?,?,?,?)";
+			jdbcTemplate.update(sql, 
+								institute.getInst_id(),
+								institute.getInst_name(),
+								institute.getInst_city(),
+								institute.getInst_address(),
+								institute.getInst_phone(),
+								institute.getInst_email(),
+								institute.getSchema_name()
+							);
+			
+		}			
+	}
+	
+	
+	public void updateInstitute(Institute institute) {
+		String sql = "UPDATE institute SET "
+										+ "name = ?, "
+										+ "city = ?"
+										+ "address = ?,"
+										+ "phone = ?,"
+										+ "email = ?"
+										
+								+ " WHERE inst_id=?";
+		
+		if(countInstitutes(institute.getInst_id())> 0){
+				
+			jdbcTemplate.update(sql,
+					
+					institute.getInst_name(), 
+					institute.getInst_city(),
+					institute.getInst_address(),
+					institute.getInst_phone(),
+					institute.getInst_email(),
+					
+					institute.getInst_id()
+				);	
+			System.out.println("updated successfully..");
+			
 		}
 		else{
-			System.out.println("came to insert.............");
-			String sql = "INSERT INTO institute(inst_id,inst_name,address,email,tp_no) values(?,?,?,?,?)";
-			jdbcTemplate.update(sql, institute.getId(),institute.getName(), institute.getAddress(),institute.getEmail(),
-							institute.getTp_no());
-		}*/
-		System.out.println("came to insert.............");
-		String sql = "INSERT INTO institute(inst_id,inst_name,address,email,tp_no) values(?,?,?,?,?)";
-		jdbcTemplate.update(sql, institute.getId(),institute.getName(), institute.getAddress(),institute.getEmail(),
-						institute.getTp_no());
-				
+			System.out.println("No matching institute..");
+		}
+		
+					
 	}
+	
     
-	@Override
-    public void delete(int inst_id){
+    public void deleteInstitute(int inst_id){
     	
     	String sql="DELETE FROM institute WHERE inst_id=?";
     	jdbcTemplate.update(sql,inst_id);
     	
     }
 	
-	 public void update(Institute institute){
+	/*public void update(Institute institute){
 		 
-		 String sql = "UPDATE institute SET name=?, email=?,adress=?,"
-					+ "tp_phone=? WHERE inst_id=?";
-			jdbcTemplate.update(sql,institute.getName(), institute.getEmail(), 
-								institute.getAddress(),institute.getId());		 
-	 }
+		  
+	 }*/
      
-	@Override
+	
     public Institute get(int inst_id){
     	
     	String sql="SELECT * FROM institute WHERE inst_id=?";
     	return jdbcTemplate.query(sql, new ResultSetExtractor<Institute>(){
     		
-    		@Override
+    		
     		public Institute extractData(ResultSet rs) throws SQLException, DataAccessException{
     			
     			if(rs.next()){
     				Institute institute = new Institute();
-    				institute.setId(rs.getInt("inst_id"));
-    				institute.setName(rs.getString("name"));
-    				institute.setEmail(rs.getString("email"));
-    				institute.setAddress(rs.getString("address"));
-    				institute.setTp_no(rs.getString("tp_no"));
+    				institute.setInst_id(rs.getInt("inst_id"));
+    		        institute.setInst_name(rs.getString("inst_name"));
+    		        institute.setInst_city(rs.getString("inst_city"));
+    		        institute.setInst_address(rs.getString("inst_address"));
+    		        institute.setInst_phone(rs.getString("inst_phone"));
+    		        institute.setInst_email(rs.getString("inst_email"));
+    		        institute.setSchema_name(rs.getString("schema_name"));
+    		        
+    		        institute.setInst_id(rs.getInt("inst_id"));
     				return institute;
     			}
     			return null;
@@ -86,15 +127,17 @@ public class InstituteDaoImpl implements InstituteDao{
     	List<Institute> instituteList = jdbcTemplate.query(sql,
     			new RowMapper<Institute>(){
     		
-    		@Override
+    		
     		public Institute mapRow(ResultSet rs, int rowNum) throws SQLException{
     			
     			Institute institute = new Institute();
-    			institute.setId(rs.getInt("inst_id"));
-    			institute.setName(rs.getString("name"));
-    			institute.setEmail(rs.getString("email"));
-    			institute.setAddress(rs.getString("address"));
-    			institute.setTp_no(rs.getString("tp_no"));
+    			institute.setInst_id(rs.getInt("inst_id"));
+    	        institute.setInst_name(rs.getString("inst_name"));
+    	        institute.setInst_city(rs.getString("inst_city"));
+    	        institute.setInst_address(rs.getString("inst_address"));
+    	        institute.setInst_phone(rs.getString("inst_phone"));
+    	        institute.setInst_email(rs.getString("inst_email"));
+    	        institute.setSchema_name(rs.getString("schema_name"));
     			
     			return institute;
     		}
@@ -104,5 +147,45 @@ public class InstituteDaoImpl implements InstituteDao{
     	return instituteList;
     	
     }
+    
+    public Institute getInstituteNameById(int inst_id) {
+		
+		String sql = "SELECT * FROM institutes WHERE inst_id=?";
+		return jdbcTemplate.queryForObject(sql, new Object[] {inst_id}, new InstituteMapper());
+		
+	}
+	
+	
+	public List<Institute> fetchAllInstitutes() {
+		
+		return jdbcTemplate.query("SELECT * FROM institutes", new InstituteMapper());
+	}
+	
+	private static final class InstituteMapper implements RowMapper<Institute> {
+		
+	    public Institute mapRow(ResultSet rs, int rowNum) throws SQLException {
+	        Institute institute = new Institute();
+	        institute.setInst_id(rs.getInt("inst_id"));
+	        institute.setInst_name(rs.getString("inst_name"));
+	        institute.setInst_city(rs.getString("inst_city"));
+	        institute.setInst_address(rs.getString("inst_address"));
+	        institute.setInst_phone(rs.getString("inst_phone"));
+	        institute.setInst_email(rs.getString("inst_email"));
+	        institute.setSchema_name(rs.getString("schema_name"));
+	        return institute;
+	    }
+	}
+    
+	public String getInstituteSchemaById(int inst_id){
+		
+		String sql = "SELECT schema_name FROM global_institutes WHERE inst_id=?";
+		
+		String schema = jdbcTemplate.queryForObject(sql, new Object[]{10}, String.class);
+		return schema;
+		
+	}
+
+	
+    
 	
 }

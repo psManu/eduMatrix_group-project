@@ -8,17 +8,102 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
+/*import org.springframework.jdbc.core.RowMapper;
 
-
+import com.springmvc.entities.Institute;*/
 import com.springmvc.entities.Manager;
 
 public class ManagerDaoImpl implements ManagerDao{
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+
+	public Integer countManagers(int user_id) {
+		
+		String sql = "SELECT COUNT(*) FROM global_useraccounts WHERE auth_level=manager and user_id=?";
+		
+		Integer count = jdbcTemplate.update(sql, user_id);
+		return count;
+	}
 	
-	@Override
+	public void addManager(Manager manager) {
+		
+		String sql = "INSERT INTO global_useraccounts(inst_id,username,password,name,auth_level) VALUES(?,?,?,?,?)";
+		
+		if(countManagers(manager.getUser_id()) == 0){
+			
+			jdbcTemplate.update(sql, 
+					manager.getInst_id(),
+					manager.getUsername(),
+					manager.getPassword(),
+					manager.getEmp_name(),
+					manager.getAuth_level()
+				);
+		}
+		
+	}
+
+	
+	public void updateManager(Manager manager) {
+		
+		if(countManagers(manager.getUser_id()) != 0){
+			
+			String sql = "UPDATE global_useraccounts SET username=?,password=?,name=? "
+																+ "WHERE auth_level=? and user_id = ?";
+			
+			jdbcTemplate.update(sql,
+							manager.getUsername(),
+							manager.getPassword(),
+							manager.getEmp_name(),
+							
+							manager.getAuth_level(),
+							manager.getUser_id()
+					);
+		}
+		
+		
+	}
+
+	
+	public void deleteManager(int user_id) {
+		
+		String sql = "DELETE FROM global_useraccounts WHERE user_id=?";
+		jdbcTemplate.update(sql, user_id);
+		
+	}
+
+	
+	public Manager getManagerById(int user_id) {
+		
+		String sql = "SELECT * FROM global_useraccounts WHERE user_id=?";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Manager>(){
+    		
+    		
+    		public Manager extractData(ResultSet rs) throws SQLException, DataAccessException{
+    			
+    			if(rs.next()){
+    				Manager manager = new Manager();
+    				
+    				return manager;
+    			}
+    			return null;
+    		}	
+    	});		  
+		
+	}
+
+	
+	public List<Manager> fetchAllManagers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	
+	
+	
+	/*@Override
 	public void saveOrUpdate(Manager manager){
 		
 		if(manager.getOfcr_id() != null){
@@ -128,8 +213,8 @@ public class ManagerDaoImpl implements ManagerDao{
 	    			manager.setDate_joined(rs.getString("date_joined"));
 	    			manager.setSalary(rs.getString("salary"));
 	    			
-	    			/*manager.setUsername("username");
-	    			manager.setPassword("password");*/
+	    			manager.setUsername("username");
+	    			manager.setPassword("password");
 	    			
 	    			return manager;
 	    		}
@@ -138,6 +223,6 @@ public class ManagerDaoImpl implements ManagerDao{
 	    	
 	    	return managerList;
 		
-	}
+	}*/
 	
 }

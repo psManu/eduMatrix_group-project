@@ -18,7 +18,7 @@ public class OfficerDaoImpl implements OfficerDao{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	@Override
+	
 	public void saveOrUpdate(Officer officer){
 		
 		if(officer.getOfcr_id() != null){
@@ -71,7 +71,7 @@ public class OfficerDaoImpl implements OfficerDao{
 		
 	}
 
-	@Override
+	
 	public void delete(int ofcr_id) {
 		
 		String sql="DELETE FROM officer WHERE ofcr_id=?";                    //must change the sql here...
@@ -79,12 +79,12 @@ public class OfficerDaoImpl implements OfficerDao{
 		
 	}
 
-	@Override
+	
 	public Officer get(int ofcr_id) {
 		String sql="SELECT * FROM officer WHERE ofcr_id=?";                   //must change the sql here...a JOIN comes
     	return jdbcTemplate.query(sql, new ResultSetExtractor<Officer>(){
     		
-    		@Override
+    		
     		public Officer extractData(ResultSet rs) throws SQLException, DataAccessException{
     			
     			if(rs.next()){
@@ -107,14 +107,14 @@ public class OfficerDaoImpl implements OfficerDao{
 		
 	}
 
-	@Override
+	
 	public List<Officer> list() {
 			String sql = "SELECT * FROM officer"; //must change the sql here...a JOIN comes
 	    	
 	    	List<Officer> officerList = jdbcTemplate.query(sql,
 	    			new RowMapper<Officer>(){
 	    		
-	    		@Override
+	    		
 	    		public Officer mapRow(ResultSet rs, int rowNum) throws SQLException{
 	    			
 	    			Officer officer = new Officer();

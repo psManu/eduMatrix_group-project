@@ -6,12 +6,16 @@ import com.springmvc.entities.Manager;
 
 public interface ManagerDao {
 	
-	public void saveOrUpdate(Manager manager);
+	public Integer countManagers(int user_id);
+	
+	public void addManager(Manager manager);
     
-    public void delete(int mgr_id);
+	public void updateManager(Manager manager);
+	
+    public void deleteManager(int user_id);
      
-    public Manager get(int mgr_id);
+    public Manager getManagerById(int user_id);
      
-    public List<Manager> list();
+    public List<Manager> fetchAllManagers();
 	
 }
