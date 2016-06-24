@@ -41,7 +41,7 @@ public class MainController {
 		
 	}*/
 	
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	/*@RequestMapping(value="/save", method=RequestMethod.POST)
 	public ModelAndView save(@RequestParam("std_id") String std_id,@RequestParam("name") String std_name,@RequestParam("address") String address,@RequestParam("courses")List<String> courses){
 		
 		Student student = new Student();
@@ -55,7 +55,7 @@ public class MainController {
 		
 		return model;
 		
-	}
+	}*/
 	
 	
 	

@@ -6,13 +6,15 @@ import com.springmvc.entities.Student;
 
 public interface StudentService {
 	
-	void saveOrUpdate(Student student);
+	void addStudent(Student student);
+	
+	void updateStudent(Student student);
     
-    void delete(int std_id);
-    
-    Student get(int std_id);
-    
-    List<Student> list();
+    void deleteStudent(int std_id);
+     
+    Student getStudentDetailsById(int std_id);
+     
+    List<Student> fetchAllStudentslist();
 	
 	
 }

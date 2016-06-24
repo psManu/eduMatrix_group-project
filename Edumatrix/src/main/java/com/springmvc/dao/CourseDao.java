@@ -6,12 +6,14 @@ import com.springmvc.entities.Course;
 
 public interface CourseDao {
 	
-	public void saveOrUpdate(Course course);
+	public void addCourse(Course course);
+	
+	public void updateCourse(Course course);
     
-    public void delete(int crs_id);
+    public void deleteCourse(int crs_id);
      
-    public Course get(int crs_id);
+    public Course getCourseDetailsById(int crs_id);
      
-    public List<Course> list();
+    public List<Course> fetchAllCourses();
 	
 }

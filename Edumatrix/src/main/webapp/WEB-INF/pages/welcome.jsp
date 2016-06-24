@@ -24,7 +24,13 @@
 		<input type="text" name="tp_no" /><br>
 		
 		<label>Courses:</label>
-		<input type="text" name="courses" /><br>
+		<!-- <input type="text" name="courses" /><br> -->
+		
+		<select name="courses" multiple>
+			<option value="5" >5</option>
+			<option value="10" >10</option> 
+			<option value="15" >15</option>
+		</select>
 		
 		<input type="submit" value="submit" />
 	</form>

@@ -6,12 +6,16 @@ import com.springmvc.entities.Officer;
 
 public interface OfficerService {
 	
-	void saveOrUpdate(Officer officer);
+	Integer countOfficers(int user_id);
+	
+	void addOfficer(Officer officer);
     
-    void delete(int ofcr_id);
-    
-    Officer get(int ofcr_id);
-    
-    List<Officer> list();
+	void updateOfficer(Officer officer);
+	
+    void deleteOfficer(int user_id);
+     
+    Officer getOfficerById(int user_id);
+     
+    List<Officer> fetchAllOfficers();
 	
 }

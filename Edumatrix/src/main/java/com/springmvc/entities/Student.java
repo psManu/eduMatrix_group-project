@@ -5,81 +5,86 @@ import java.util.List;
 
 public class Student {
 	
-	private String std_id;
-	private String name;
-	private String address;
-	private String tp_no;
-	/*private String email;
-	private String school;
-	private String bday;*/
-	private List<String> courses;
-	/*private String username;
-	private String password;*/
+	private Integer stud_id;
+	private String stud_name;
+	/*private Date stud_dob;*/
+	private String stud_nic;
+	private String stud_mob_phn;
+	private String stud_address;
+	private String sch_id;
+	private List<Course> stud_enrolled_crs;
+	private String stud_propic;
+	private String stud_guardian_name;
+	private String stud_guardian_mob_phn;
+	private java.util.Date utilDate = new java.util.Date();
+	/*private List<String> courses;*/
 	
-	
-	public String getStd_id() {
-		return std_id;
+	public Integer getStud_id() {
+		return stud_id;
 	}
-	public void setStd_id(String std_id) {
-		this.std_id = std_id;
+	public void setStud_id(Integer stud_id) {
+		this.stud_id = stud_id;
 	}
-	public String getName() {
-		return name;
+	public String getStud_name() {
+		return stud_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setStud_name(String stud_name) {
+		this.stud_name = stud_name;
 	}
-	public String getAddress() {
-		return address;
+	public String getStud_nic() {
+		return stud_nic;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStud_nic(String stud_nic) {
+		this.stud_nic = stud_nic;
 	}
-	public String getTp_no() {
-		return tp_no;
+	public String getStud_mob_phn() {
+		return stud_mob_phn;
 	}
-	public void setTp_no(String tp_no) {
-		this.tp_no = tp_no;
+	public void setStud_mob_phn(String stud_mob_phn) {
+		this.stud_mob_phn = stud_mob_phn;
 	}
-	/*public String getEmail() {
-		return email;
+	public String getStud_address() {
+		return stud_address;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setStud_address(String stud_address) {
+		this.stud_address = stud_address;
 	}
-	public String getSchool() {
-		return school;
+	public String getSch_id() {
+		return sch_id;
 	}
-	public void setSchool(String school) {
-		this.school = school;
+	public void setSch_id(String sch_id) {
+		this.sch_id = sch_id;
 	}
-	public String getBday() {
-		return bday;
+	public List<Course> getStud_enrolled_crs() {
+		return stud_enrolled_crs;
 	}
-	public void setBday(String bday) {
-		this.bday = bday;
-	}*/
-	
-	
-	public List<String> getCourses() {
-		return courses;
+	public void setStud_enrolled_crs(List<Course> stud_enrolled_crs) {
+		this.stud_enrolled_crs = stud_enrolled_crs;
 	}
-	public void setCourses(List<String> courses) {
-		this.courses = courses;
+	public String getStud_propic() {
+		return stud_propic;
 	}
-	
-	/*public String getUsername() {
-		return username;
+	public void setStud_propic(String stud_propic) {
+		this.stud_propic = stud_propic;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public String getStud_guardian_name() {
+		return stud_guardian_name;
 	}
-	public String getPassword() {
-		return password;
+	public void setStud_guardian_name(String stud_guardian_name) {
+		this.stud_guardian_name = stud_guardian_name;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}*/
+	public String getStud_guardian_mob_phn() {
+		return stud_guardian_mob_phn;
+	}
+	public void setStud_guardian_mob_phn(String stud_guardian_mob_phn) {
+		this.stud_guardian_mob_phn = stud_guardian_mob_phn;
+	}
+	public java.util.Date getUtilDate() {
+		return utilDate;
+	}
+	public void setUtilDate(java.util.Date utilDate) {
+		this.utilDate = utilDate;
+	}
 	
 	
 }

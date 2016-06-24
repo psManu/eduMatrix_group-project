@@ -6,12 +6,14 @@ import com.springmvc.entities.Student;
 
 public interface StudentDao {
 	
-public void saveOrUpdate(Student student);
+	void addStudent(Student student);
+	
+	void updateStudent(Student student);
     
-    public void delete(int std_id);
+    void deleteStudent(int std_id);
      
-    public Student get(int std_id);
+    Student getStudentDetailsById(int std_id);
      
-    public List<Student> list();
+    List<Student> fetchAllStudentslist();
 	
 }

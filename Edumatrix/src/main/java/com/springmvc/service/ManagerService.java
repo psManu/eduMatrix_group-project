@@ -6,13 +6,17 @@ import com.springmvc.entities.Manager;
 
 public interface ManagerService {
 	
-void saveOrUpdate(Manager manager);
+	Integer countManagers(int user_id);
+	
+	void addManager(Manager manager);
+	
+	void updateManager(Manager manager);
     
-    void delete(int mgr_id);
+    void deleteManager(int user_id);
     
-    Manager get(int mgr_id);
+    public Manager getManagerById(int user_id);
     
-    List<Manager> list();
+    public List<Manager> fetchAllManagers();
 	
 	
 }
