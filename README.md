@@ -9,5 +9,5 @@ Database
 ***Password   : ucsc
 
 
-
-
+#Project File Structure
+is on the pro_structure folder
