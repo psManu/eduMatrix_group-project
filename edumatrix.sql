@@ -66,7 +66,7 @@ CREATE	TABLE		inst_employees(
 	emp_name		TEXT,
 	emp_nic			VARCHAR(12),
 	emp_mob_phn	VARCHAR(15),
-	emp_address		VARCHAR(100),
+	emp_address		VARCHAR(100)
 );
 
 --An employee from above table is given the system access by adding him to the global_useraccounts table
@@ -94,7 +94,7 @@ CREATE	TABLE		inst_student_details(
 	stud_enrolled_crs					JSONB,
 	stud_propic							VARCHAR(50),
 	stud_guardian_name				TEXT,
-	stud_guardian_mob_phn		VARCHAR(15),
+	stud_guardian_mob_phn		VARCHAR(15)
 );
 
 
@@ -115,7 +115,7 @@ CREATE	TABLE		inst_course_details(
 	crs_fee_monthly			REAL,
 	crs_noof_studs			INTEGER	DEFAULT 0,
 	crs_strt_date				DATE,
-	crs_end_date				DATE,
+	crs_end_date				DATE
 );
 -- Student ID s of those who have enrolled in an course are kept
 --Like  {'std_01', "std_05" ........................}
@@ -181,7 +181,7 @@ CREATE	TABLE		inst_calendar_event(
 	event_date	DATE,
 	event_time		VARCHAR(20),
 	created_by	INTEGER,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id)
+	FOREIGN KEY(created_by)		REFERENCES		inst_employees(emp_id)
 );
 
 CREATE	TABLE		inst_course_fees(
