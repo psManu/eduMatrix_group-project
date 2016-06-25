@@ -1,0 +1,37 @@
+**********************Manager****************************
+
+1)Add/Remove/Edit Employee
+
+2)View Finacial Reports
+
+3)View Attendace Reports
+
+4)View Activity Logs
+
+5)Add/Edit/Remove New Lecturer
+
+6)View/Edit Own Profile
+
+7)Edit Own Privilegs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
