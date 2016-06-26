@@ -18,8 +18,8 @@ is on the pro_structure folder<br />
 #Controller call and response by Ajax <br />
 :::::::::::::::::A sample has been added for Officer Activities ::::::::::::::::::::::::::::::::<br />
 ******Newly added -><br />
-               AjaxResponse  (An object to store a particular json response)<br />
-               View          A dummy class for json building<br />
-               @RestController instead of @Controller      To provide json responses for calls <br />
-               @ResponseBody               A response content is returned.Not a jsp page<br />
-               @RequestBody                Request parameters are passed via json body.<br />
+               AjaxResponse     ||  (An object to store a particular json response)<br />
+               View             ||  A dummy class for json building<br />
+               @RestController  ||  instead of @Controller      To provide json responses for calls <br />
+               @ResponseBody    ||  A response content is returned.Not a jsp page<br />
+               @RequestBody     ||  Request parameters are passed via json body.<br />
