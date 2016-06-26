@@ -39,7 +39,7 @@
 												<input type="file" value="Upload Picture" name="pro_pic">
 											</td></tr>
 											<tr><td><input type="text" id="stud_name" placeholder="Students Name"></td></tr>
-											<tr><td><input type="text" id="stud_dob" placeholder="Date of Birth"></td></tr>
+											<tr><td><input type="text" id="stud_dob" placeholder="Date of Birth" size="30"></td></tr>
 										</table>
 									</td>
 									<td style="min-width:50%; max-width:50%;">
