@@ -14,6 +14,7 @@
 		var dialogId = "#" + dialog_id;
 		$( dialogId ).dialog("open");
 		loadTabs(tabs_id);
+		loadDatePicker('stud_dob');
 	}
 
 //// Load tabs when given id	
@@ -22,7 +23,10 @@
 		$( tabList ).tabs();
 	}
 
-
+	function loadDatePicker(id){
+		var datePicker = "#" + id;
+		$( datePicker ).datepicker({ dateFormat:'yy-mm-dd'});
+	}
 ////////////Dialog Box for Student Activities//////////////////////////////////////////////
 
  $(function() {
