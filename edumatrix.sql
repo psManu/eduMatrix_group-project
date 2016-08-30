@@ -50,7 +50,7 @@ CREATE	TABLE		global_schools(
 --Institute Based relations (eg: inst_xxx)--
 CREATE 	SCHEMA 	inst_xxx;
 
-SET search_path=instxxx;
+SET search_path=inst_xxx;
 
 -- Store details of registered users activities in the system  (no foreign keys -> preserve data even after an user account deletion)--
 CREATE	TABLE		inst_activity_log(
