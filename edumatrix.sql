@@ -20,6 +20,9 @@ CREATE 	TABLE		global_institutes(
 	inst_id			SERIAL		PRIMARY KEY,
 	inst_name		TEXT,
 	inst_city		TEXT,
+	inst_tele		TEXT,
+	inst_address		TEXT,
+	inst_email		TEXT,
 	schema_name		VARCHAR(50)
 );
 
