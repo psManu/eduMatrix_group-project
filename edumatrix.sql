@@ -30,7 +30,7 @@ CREATE	TABLE		global_useraccounts(
 	password				VARCHAR(50),
 	user_name			TEXT,
 	auth_level				auth_type,
-	FOREIGN KEY(inst_id)	REFERENCES		global_institutes(inst_id)
+	FOREIGN KEY(inst_id)	REFERENCES		global_institutes(inst_id) ON DELETE CASCADE
 );
 
 
@@ -74,8 +74,8 @@ CREATE	TABLE		inst_employees(
 CREATE	TABLE		inst_user(
 	emp_id				INTEGER	UNIQUE PRIMARY KEY,	
 	user_id				INTEGER	UNIQUE,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id),
-	FOREIGN KEY(user_id)		REFERENCES		public.global_useraccounts(user_id)
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE,
+	FOREIGN KEY(user_id)		REFERENCES		public.global_useraccounts(user_id) ON DELETE CASCADE
 );
 
 
@@ -91,7 +91,7 @@ CREATE	TABLE		inst_student_details(
 	stud_mob_phn						VARCHAR(15),
 	stud_address						VARCHAR(100),
 	stud_sch_id							INTEGER,
-	stud_enrolled_crs					JSONB,
+	stud_enrolled_crs					INTEGER[],
 	stud_propic							VARCHAR(50),
 	stud_guardian_name				TEXT,
 	stud_guardian_mob_phn		VARCHAR(15)
@@ -122,7 +122,7 @@ CREATE	TABLE		inst_course_details(
 CREATE	TABLE		inst_course_enrolledstudents(
 	crs_id						INTEGER		PRIMARY KEY,
 	enrolled_studs			INTEGER[],
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)	
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE	
 );
 -- Just how each course is gonna pay for its lecturer
 --pay_strategy can have two values either fixed or per head
@@ -139,8 +139,8 @@ CREATE	TABLE		inst_course_lec_pay(
 CREATE	TABLE		inst_course_lecturer(
 	crs_id						INTEGER,
 	emp_id						INTEGER,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id),
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)		
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE,
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE		
 );
 
 -- Privileges for officers , By default everything is false--
@@ -152,7 +152,7 @@ CREATE	TABLE		inst_officer_privilleges(
 	add_emp					BOOLEAN		DEFAULT		FALSE,
 	collect_fees				BOOLEAN		DEFAULT		FALSE,
 	pay_salary				BOOLEAN		DEFAULT		FALSE,
-	FOREIGN KEY(user_id)		REFERENCES		inst_user(user_id)	
+	FOREIGN KEY(user_id)		REFERENCES		inst_user(user_id) ON DELETE CASCADE	
 );
 
 --attendace is kept in a json like  {stud_id:attendance}  ==> {'stud_id_01:1', 'stud_id_05:0', 'stud_id_11: 1'}--> 
@@ -163,7 +163,7 @@ CREATE	TABLE		inst_course_attendance(
 	crs_id						INTEGER,
 	lecture_date				DATE,
 	attendace_record		JSONB,
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE
 );
 
 
@@ -171,7 +171,7 @@ CREATE	TABLE		inst_course_attendance(
 CREATE 	TABLE		inst_course_shedule(
 	crs_id				INTEGER		PRIMARY KEY,
 	on_days			JSONB,
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE
 );
 
 --Events are shown in institute calendar.eg An exam is an event.eg: Awrudu Day , An usual class... Made just as reminders. 
@@ -181,19 +181,19 @@ CREATE	TABLE		inst_calendar_event(
 	event_date	DATE,
 	event_time		VARCHAR(20),
 	created_by	INTEGER,
-	FOREIGN KEY(created_by)		REFERENCES		inst_employees(emp_id)
+	FOREIGN KEY(created_by)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE
 );
 
 CREATE	TABLE		inst_course_fees(
 	crs_id			INTEGER		PRIMARY KEY,
 	crs_fees			REAL,
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE
 );
 
 CREATE	TABLE		inst_emp_salary(
 	emp_id					INTEGER		PRIMARY KEY,
 	monthly_salary		REAL,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id)
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE
 );
 
 CREATE	TABLE		inst_user_payment_history(
@@ -202,7 +202,7 @@ CREATE	TABLE		inst_user_payment_history(
 	paid_date				DATE,
 	amount					REAL,
 	paid_by					INTEGER,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id)
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE
 );
 --- Current account balance for a particular employee 
 --- On the first day of the month total_balance becomes brought_balance and other values get zero(by a stored procedure)
@@ -213,7 +213,7 @@ CREATE	TABLE		inst_user_payment_balance(
 	total_balance							REAL,
 	withdrawings						REAL,
 	additional								REAL,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id)
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE
 );
 
 
@@ -227,7 +227,7 @@ CREATE	TABLE		inst_incomes(
 
 CREATE	TABLE		inst_incomes_coursefees(
 	crs_id					INTEGER,
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)	
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE	
 ) INHERITS (inst_incomes);
 
 CREATE	TABLE		inst_incomes_other(
@@ -242,12 +242,12 @@ CREATE	TABLE		inst_expenses(
 
 CREATE	TABLE		inst_expenses_lecturer_salary(
 	crs_id				INTEGER,
-	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id)	
+	FOREIGN KEY(crs_id)		REFERENCES		inst_course_details(crs_id) ON DELETE CASCADE	
 ) INHERITS (inst_expenses);
 
 CREATE	TABLE		inst_expenses_emp_salary(
 	emp_id				INTEGER,
-	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id)	
+	FOREIGN KEY(emp_id)		REFERENCES		inst_employees(emp_id) ON DELETE CASCADE	 
 ) INHERITS (inst_expenses);
 
 CREATE	TABLE		inst_expenses_other(
