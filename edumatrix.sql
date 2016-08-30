@@ -57,7 +57,7 @@ CREATE	TABLE		inst_activity_log(
 	act_id				SERIAL		PRIMARY KEY,
 	user_id				INTEGER,
 	act					TEXT,
-	date_time timestamp without time zone,
+	date_time timestamp without time zone
 );
 
 
